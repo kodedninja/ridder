@@ -1,3 +1,4 @@
 dat.json
 node_modules
 content/*
+bundles/bundle.js
