@@ -19,7 +19,7 @@ function ridder() {
 			info: null,
 			config: {
 				cache: false,
-				itemsPerPage: 50
+				itemsPerPage: 5
 			}
 		}
 
@@ -141,6 +141,8 @@ function ridder() {
 			state.ridder.feed.sort((a, b) => {
 				return (new Date(b.pubdate).getTime() - new Date(a.pubdate).getTime())
 			})
+
+			state.pages = Math.floor(state.ridder.feed / state.ridder.config.itemsPerPage)
 		}
 	}
 }

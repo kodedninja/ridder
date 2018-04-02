@@ -11,9 +11,15 @@ function view(state, emit) {
 				${state.ridder.sources.map(source)}
 			</div>
 			<div class="dib 4/5 fl">
-				${state.ridder.feed
-					.filter(pagination)
-					.map(item)}
+				<div class="1 fl">
+					${state.ridder.feed
+						.filter(pagination)
+						.map(item)}
+				</div>
+				<div class="1 py1 fl">
+					<a href="#" class="fl nbb" onclick="${prev_page}">${state.page != 0 ? '← Back' : ''}</a>
+					<a href="#" class="fr nbb" onclick="${next_page}">${(state.page != state.pages - 1) ? 'Next →' : ''}</a>
+				</div>
 			</div>
 		</div>
 	`
@@ -51,4 +57,13 @@ function view(state, emit) {
 			id <= (state.page + 1) * state.ridder.config.itemsPerPage
 	}
 
+	function next_page(e) {
+		e.preventDefault()
+		emit('page:move', 1)
+	}
+
+	function prev_page(e) {
+		e.preventDefault()
+		emit('page:move', -1)
+	}
 }
