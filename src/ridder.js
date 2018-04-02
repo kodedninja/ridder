@@ -15,6 +15,7 @@ function ridder() {
 
 		state.ridder = {
 			feed: [],
+			sources: [],
 			info: null,
 			cache: false
 		}
@@ -52,8 +53,9 @@ function ridder() {
 				try {
 					var sources = await archive.readFile('/content/sources.json')
 					sources = JSON.parse(sources)
+					state.ridder.sources = sources.list
 
-					sources.list.forEach(async function(source, id) {
+					state.ridder.sources.forEach(async function(source, id) {
 						source = parse_url(source)
 
 						if (source.protocol == 'dat:') {

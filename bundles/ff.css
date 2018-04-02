@@ -9,7 +9,7 @@
 html { font-size: 17px }
 
 body, pre {
-   font-family: arial;
+   font-family: 'lunchtype22regular';
    line-height: 1.6;
    font-size: 1rem;
    font-feature-settings:"onum" 1, "pnum" 1, "kern" 1, "ss01" 1;
@@ -27,14 +27,17 @@ a:not(.nbb) {
   padding-bottom: 0.2em;
 }
 
+.mark { background: #000; color: #fff; padding: 2px; }
+
 /* Typography */
 
-h1, h2, h3, .f1, .f2, .f3, .f4 { font-family: 'helvetica neue', helvetica, sans-serif; font-weight: bold; }
+h1, h2, h3, .f1, .f2, .f3, .f4 { font-weight: bold; }
 
 h1, .f1 { font-size: 2.5rem; }
 h2, .f2 { font-size: 2rem; }
 h3, .f3 { font-size: 1.5rem; }
 h4, .f4 { font-size: 1.25rem; }
+.fsmall { font-size: 0.75rem; }
 
 .i { font-style: italic; }
 .b { font-weight: bold; }
@@ -44,8 +47,6 @@ h4, .f4 { font-size: 1.25rem; }
 .ttu { text-transform: uppercase; }
 .tac { text-align: center }
 
-.ffss { font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir, helvetica, 'helvetica neue', ubuntu, roboto, noto, 'segoe ui', arial, sans-serif; }
-.ffh { font-family: 'helvetica neue', helvetica, sans-serif; }
 .ffmono { font-family: monospace }
 
 .fwb { font-weight: bold; }
@@ -106,6 +107,8 @@ code {
 .\35 \2f 6{width:83.333%}
 .auto { width: auto; }
 
+.ofh { overflow: hidden; }
+
 .mw800 { max-width: 800px }
 .mw1000 { max-width: 1000px }
 .mw1200 { max-width: 1200px }
@@ -129,11 +132,13 @@ code {
 .p1 { padding: 1.5rem }
 .p2 { padding: 3rem }
 .px1 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.pr1 { padding-right: 1.5rem; }
 .py1 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
 .pt1 { padding-top: 1.5rem }
 .pb1 { padding-bottom: 1.5rem }
 
 .m0 { margin: 0 }
+.ml0-5 { margin-left: 0.75rem; }
 .my1 { margin: 1.5rem 0 }
 .mx1 { margin: 0 1.5rem }
 .mr1 { margin-right: 1.5rem }

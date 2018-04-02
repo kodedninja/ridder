@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'lunchtype22regular';
+    src: url('lunchtype22-regular-webfont.woff2') format('woff2'),
+         url('lunchtype22-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'lunchtype22medium';
+    src: url('lunchtype22-medium-webfont.woff2') format('woff2'),
+         url('lunchtype22-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'lunchtype22light';
+    src: url('lunchtype22-light-webfont.woff2') format('woff2'),
+         url('lunchtype22-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

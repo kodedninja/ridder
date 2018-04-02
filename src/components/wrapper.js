@@ -14,7 +14,7 @@ module.exports = function(view) {
 		function header() {
 			return html`
 				<div class="db 1 mb1">
-					ridder
+					<span class="mark">Ridder</span><span class="fsmall ml0-5">Pre-Alpha</span>
 				</div>
 			`
 		}
