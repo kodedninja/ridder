@@ -17,7 +17,10 @@ function ridder() {
 			feed: [],
 			sources: [],
 			info: null,
-			cache: false
+			config: {
+				cache: false,
+				itemsPerPage: 50
+			}
 		}
 
 		emitter.on(state.events.DOMCONTENTLOADED, loaded)
@@ -30,7 +33,7 @@ function ridder() {
 		async function load_dat() {
 			//state.ridder.info = await archive.getInfo()
 
-			if (state.ridder.cache) load_cache()
+			if (state.ridder.config.cache) load_cache()
 			get_feed()
 
 			async function load_cache() {
@@ -106,7 +109,7 @@ function ridder() {
 							})
 						}
 
-						if (state.ridder.cache) save_cache()
+						if (state.ridder.config.cache) save_cache()
 					})
 				} catch (e) {
 					console.log(e)

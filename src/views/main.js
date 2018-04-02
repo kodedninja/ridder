@@ -11,7 +11,9 @@ function view(state, emit) {
 				${state.ridder.sources.map(source)}
 			</div>
 			<div class="dib 4/5 fl">
-				${state.ridder.feed.map(item)}
+				${state.ridder.feed
+					.filter(pagination)
+					.map(item)}
 			</div>
 		</div>
 	`
@@ -43,4 +45,10 @@ function view(state, emit) {
 			return days[d.getDay()] + ', ' + d.getDate() + '. ' + months[d.getMonth()] + ' ' + d.getFullYear() + '.'
 		}
 	}
+
+	function pagination(_, id) {
+		return id > state.page * state.ridder.config.itemsPerPage &&
+			id <= (state.page + 1) * state.ridder.config.itemsPerPage
+	}
+
 }
