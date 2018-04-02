@@ -1,0 +1,38 @@
+{
+  "name": "ridder",
+  "version": "0.0.1",
+  "description": "An RSS reader for Beaker",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "browserify -o bundles/bundle.js src/index.js",
+    "start": "watchify -o bundles/bundle.js src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kodedninja/ridder.git"
+  },
+  "keywords": [
+    "rss",
+    "dat",
+    "beakerbrowser",
+    "peer-to-peer"
+  ],
+  "author": "kodedninja",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kodedninja/ridder/issues"
+  },
+  "homepage": "https://github.com/kodedninja/ridder#readme",
+  "dependencies": {
+    "choo": "^6.11.0-preview1",
+    "feedme": "^1.2.0",
+    "forkup": "^0.2.1",
+    "nanohtml": "^1.2.2",
+    "parse-dat-url": "^3.0.1",
+    "xhr": "^2.4.1"
+  },
+  "devDependencies": {
+    "browserify": "^16.1.1",
+    "watchify": "^3.11.0"
+  }
+}
