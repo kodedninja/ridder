@@ -15,7 +15,8 @@ function ridder() {
 
 		state.ridder = {
 			feed: [],
-			info: null
+			info: null,
+			cache: false
 		}
 
 		emitter.on(state.events.DOMCONTENTLOADED, loaded)
@@ -28,7 +29,7 @@ function ridder() {
 		async function load_dat() {
 			//state.ridder.info = await archive.getInfo()
 
-			load_cache()
+			if (state.ridder.cache) load_cache()
 			get_feed()
 
 			async function load_cache() {
@@ -103,7 +104,7 @@ function ridder() {
 							})
 						}
 
-						save_cache()
+						if (state.ridder.cache) save_cache()
 					})
 				} catch (e) {
 					console.log(e)
@@ -131,8 +132,6 @@ function ridder() {
 
 		function add_to_feed(items) {
 			state.ridder.feed = state.ridder.feed.concat(items)
-			var set = new Set(state.ridder.feed)
-			state.ridder.feed = Array.from(set)
 
 			state.ridder.feed.sort((a, b) => {
 				return (new Date(b.pubdate).getTime() - new Date(a.pubdate).getTime())
