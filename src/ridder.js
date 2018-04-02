@@ -26,7 +26,7 @@ function ridder() {
 		}
 
 		async function load_dat() {
-			state.ridder.info = await archive.getInfo()
+			//state.ridder.info = await archive.getInfo()
 
 			load_cache()
 			get_feed()
@@ -103,7 +103,7 @@ function ridder() {
 							})
 						}
 
-						if (id == sources.list.length - 1) save_cache()
+						save_cache()
 					})
 				} catch (e) {
 					console.log(e)
