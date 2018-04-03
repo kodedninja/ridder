@@ -35,7 +35,10 @@ function view(state, emit) {
 	function item(state) {
 		return html`
 			<a href="${state.link}" class="bb db 1 nbb py1" target="_blank">
-				<a href="${state.source.url}">${state.source.title}</a> | <span class="fwb">${state.title}</span> | <span class="tcgrey">${clear(state.description)}</span> | <span>${date(state.pubdate)}</span>
+				<a href="${state.source.url}">${state.source.title + ' | '}</a>
+				<span class="fwb">${state.title}</span><span>${state.title ? ' | ' : ''}</span>
+				<span class="tcgrey">${clear(state.description)}</span><span>${state.description ? ' | ' : ''}</span>
+				<span>${date(state.pubdate)}</span>
 			</a>
 		`
 
