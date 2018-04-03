@@ -2,6 +2,8 @@ const xhr = require('xhr')
 const parse_url = require('parse-dat-url')
 const FeedMe = require('feedme')
 
+const adapter = require('./adapter')
+
 module.exports = ridder
 
 function ridder() {
@@ -19,7 +21,8 @@ function ridder() {
 			info: null,
 			config: {
 				cache: false,
-				itemsPerPage: 5
+				itemsPerPage: 5,
+				adapter: 'https://lively-adapter.glitch.me/'
 			}
 		}
 
@@ -66,16 +69,21 @@ function ridder() {
 
 							try {
 								var feed = await source_archive.readFile(source.pathname)
-								parse_feed(feed)
+								parse_feed(feed, source)
 								emitter.emit('render')
 							} catch (e) {
 								console.error(e)
 							}
 						} else {
 							xhr(source.href, function (err, res) {
-								if (err) return
+								if (err) {
+									if (err.statusCode == 0) {
+										adapter(state, emitter, source, parse_feed)
+									}
+									return
+								}
 
-								parse_feed(res.body)
+								parse_feed(res.body, source)
 								emitter.emit('render')
 							})
 						}
@@ -106,7 +114,7 @@ function ridder() {
 			await archive.writeFile('/content/cache.json', JSON.stringify(obj, null, '\t'))
 		}
 
-		function parse_feed(feed) {
+		function parse_feed(feed, source) {
 			var parser = new FeedMe(true)
 			parser.write(feed)
 			feed = parser.done()
