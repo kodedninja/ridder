@@ -59,6 +59,8 @@ h4, .f4 { font-size: 1.25rem; }
 
 .lh1 { line-height: 1.2 }
 
+.wwbw { word-wrap: break-word; }
+
 p {
 	margin: 2rem 0;
 }
@@ -139,6 +141,7 @@ code {
 
 .m0 { margin: 0 }
 .ml0-5 { margin-left: 0.75rem; }
+.mb0-5 { margin-bottom: 0.75rem; }
 .my1 { margin: 1.5rem 0 }
 .mx1 { margin: 0 1.5rem }
 .mr1 { margin-right: 1.5rem }

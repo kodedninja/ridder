@@ -14,9 +14,15 @@ module.exports = function(view) {
 		function header() {
 			return html`
 				<div class="db 1 mb1">
-					<span class="mark">Ridder</span><span class="fsmall ml0-5">Pre-Alpha</span>
+					<a href="/" class="mark nbb" onclick="${home}">Ridder</a><span class="fsmall ml0-5">Pre-Alpha</span>
 				</div>
 			`
+
+			function home(e) {
+				e.preventDefault()
+				state.page = 0
+				emit('page:move', 0)
+			}
 		}
 	}
 }

@@ -66,21 +66,7 @@ function ridder() {
 
 							try {
 								var feed = await source_archive.readFile(source.pathname)
-
-								var parser = new FeedMe(true)
-								parser.write(feed)
-								feed = parser.done()
-
-								for (var i = 0; i < feed.items.length; i++) {
-									if (feed.items[i].link.indexOf('://') == -1) feed.items[i].link = source.origin + feed.items[i].link
-									feed.items[i].source = {
-										title: feed.title,
-										url: source.origin
-									}
-								}
-
-								add_to_feed(feed.items)
-
+								parse_feed(feed)
 								emitter.emit('render')
 							} catch (e) {
 								console.error(e)
@@ -89,22 +75,7 @@ function ridder() {
 							xhr(source.href, function (err, res) {
 								if (err) return
 
-								var feed = res.body
-
-								var parser = new FeedMe(true)
-								parser.write(feed)
-								feed = parser.done()
-
-								for (var i = 0; i < feed.items.length; i++) {
-									if (feed.items[i].link.indexOf(source.origin)) feed.items[i].link = source.origin + feed.items[i].link
-									feed.items[i].source = {
-										title: feed.title,
-										url: source.origin
-									}
-								}
-
-								add_to_feed(feed.items)
-
+								parse_feed(res.body)
 								emitter.emit('render')
 							})
 						}
@@ -133,6 +104,22 @@ function ridder() {
 			}
 
 			await archive.writeFile('/content/cache.json', JSON.stringify(obj, null, '\t'))
+		}
+
+		function parse_feed(feed) {
+			var parser = new FeedMe(true)
+			parser.write(feed)
+			feed = parser.done()
+
+			for (var i = 0; i < feed.items.length; i++) {
+				if (feed.items[i].link.indexOf(source.origin)) feed.items[i].link = source.origin + feed.items[i].link
+				feed.items[i].source = {
+					title: feed.title,
+					url: source.origin
+				}
+			}
+
+			add_to_feed(feed.items)
 		}
 
 		function add_to_feed(items) {

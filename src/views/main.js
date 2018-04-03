@@ -26,8 +26,8 @@ function view(state, emit) {
 
 	function source(state) {
 		return html`
-			<div class="1 ofh fsmall">
-				${state}
+			<div class="1 ofh fsmall mb0-5">
+				<a href="${state}" class="nbb" target="_blank">${state}</a>
 			</div>
 		`
 	}
