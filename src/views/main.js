@@ -17,8 +17,8 @@ function view(state, emit) {
 						.map(item)}
 				</div>
 				<div class="1 py1 fl">
-					<a href="#" class="fl nbb" onclick="${prev_page}">${state.page != 0 ? '← Back' : ''}</a>
-					<a href="#" class="fr nbb" onclick="${next_page}">${(state.page != state.pages - 1) ? 'Next →' : ''}</a>
+					<a href="#" class="fl nbb" onclick="${prev_page}">${state.page > 0 ? '← Back' : ''}</a>
+					<a href="#" class="fr nbb" onclick="${next_page}">${state.page < state.pages - 1 ? 'Next →' : ''}</a>
 				</div>
 			</div>
 		</div>

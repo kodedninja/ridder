@@ -21,7 +21,7 @@ function ridder() {
 			info: null,
 			config: {
 				cache: false,
-				itemsPerPage: 5,
+				itemsPerPage: 20,
 				adapter: 'https://lively-adapter.glitch.me/'
 			}
 		}
@@ -34,7 +34,7 @@ function ridder() {
 		}
 
 		async function load_dat() {
-			//state.ridder.info = await archive.getInfo()
+			state.ridder.info = await archive.getInfo()
 
 			if (state.ridder.config.cache) load_cache()
 			get_feed()
@@ -75,25 +75,23 @@ function ridder() {
 								console.error(e)
 							}
 						} else {
-							xhr(source.href, function (err, res) {
-								if (err) {
-									if (err.statusCode == 0) {
-										adapter(state, emitter, source, parse_feed)
-									}
-									return
+							if (source.href.indexOf('http://') == -1) { // can't connect to http
+								try {
+									xhr(source.href, function (err, res) {
+										if (err) return
+										parse_feed(res.body, source)
+									})
+								} catch (e) {
+									adapter(state, emitter, source, parse_feed)
 								}
-
-								parse_feed(res.body, source)
-								emitter.emit('render')
-							})
+							} else {
+								adapter(state, emitter, source, parse_feed)
+							}
 						}
 
 						if (state.ridder.config.cache) save_cache()
 					})
-				} catch (e) {
-					console.log(e)
-					await archive.writeFile('/content/sources.json', JSON.stringify({list: []}))
-				}
+				} catch (e) {}
 
 				state.loaded = true
 				emitter.emit('render')
@@ -101,6 +99,7 @@ function ridder() {
 		}
 
 		async function load_http() {
+			// todo
 			emitter.emit('render')
 		}
 
@@ -128,6 +127,8 @@ function ridder() {
 			}
 
 			add_to_feed(feed.items)
+
+			emitter.emit('render')
 		}
 
 		function add_to_feed(items) {
@@ -137,7 +138,7 @@ function ridder() {
 				return (new Date(b.pubdate).getTime() - new Date(a.pubdate).getTime())
 			})
 
-			state.pages = Math.floor(state.ridder.feed / state.ridder.config.itemsPerPage)
+			state.pages = Math.floor(state.ridder.feed.length / state.ridder.config.itemsPerPage)
 		}
 	}
 }
