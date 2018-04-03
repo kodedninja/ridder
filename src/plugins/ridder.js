@@ -27,6 +27,7 @@ function ridder() {
 		}
 
 		emitter.on(state.events.DOMCONTENTLOADED, loaded)
+		emitter.on('ridder:source:remove', remove_source)
 
 		async function loaded() {
 			if (state.p2p) await load_dat()
@@ -34,7 +35,14 @@ function ridder() {
 		}
 
 		async function load_dat() {
-			state.ridder.info = await archive.getInfo()
+		//	state.ridder.info = await archive.getInfo()
+
+			try {
+				var config = await archive.readFile('/content/config.json')
+				state.ridder.config = JSON.parse(config)
+			} catch (e) {
+				// no or not correct config.json
+			}
 
 			if (state.ridder.config.cache) load_cache()
 			get_feed()
@@ -119,7 +127,7 @@ function ridder() {
 			feed = parser.done()
 
 			for (var i = 0; i < feed.items.length; i++) {
-				if (feed.items[i].link.indexOf(source.origin)) feed.items[i].link = source.origin + feed.items[i].link
+				if (feed.items[i].link && feed.items[i].link.indexOf(source.origin)) feed.items[i].link = source.origin + feed.items[i].link
 				feed.items[i].source = {
 					title: feed.title,
 					url: source.origin
@@ -139,6 +147,18 @@ function ridder() {
 			})
 
 			state.pages = Math.floor(state.ridder.feed.length / state.ridder.config.itemsPerPage)
+		}
+
+		function remove_source(src) {
+			var id = state.ridder.sources.indexOf(src)
+
+			if (id == -1) return
+
+			state.ridder.sources.splice(id, 1)
+
+			archive.writeFile('/content/sources.json', JSON.stringify({list: state.ridder.sources}, null, '\t'))
+
+			emitter.emit('render')
 		}
 	}
 }

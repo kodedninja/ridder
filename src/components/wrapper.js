@@ -19,7 +19,6 @@ module.exports = function(view) {
 			`
 
 			function home(e) {
-				e.preventDefault()
 				state.page = 0
 				emit('page:move', 0)
 			}

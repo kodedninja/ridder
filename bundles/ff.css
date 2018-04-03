@@ -9,7 +9,7 @@
 html { font-size: 17px }
 
 body, pre {
-   font-family: 'lunchtype22regular';
+   font-family: 'lunchtype22regular', sans-serif;
    line-height: 1.6;
    font-size: 1rem;
    font-feature-settings:"onum" 1, "pnum" 1, "kern" 1, "ss01" 1;

@@ -8,6 +8,7 @@ function view(state, emit) {
 	return html`
 		<div class="1">
 			<div class="dib 1/5 fl pr1 pt1">
+				<a href="/sources" class="mb1 dib">Sources</a>
 				${state.ridder.sources.map(source)}
 			</div>
 			<div class="dib 4/5 fl">
@@ -35,7 +36,7 @@ function view(state, emit) {
 	function item(state) {
 		return html`
 			<a href="${state.link}" class="bb db 1 nbb py1" target="_blank">
-				<a href="${state.source.url}">${state.source.title + ' | '}</a>
+				<a href="${state.source.url}">${state.source.title}</a><span>${' | '}</span>
 				<span class="fwb">${state.title}</span><span>${state.title ? ' | ' : ''}</span>
 				<span class="tcgrey">${clear(state.description)}</span><span>${state.description ? ' | ' : ''}</span>
 				<span>${date(state.pubdate)}</span>
