@@ -28,6 +28,7 @@ function ridder() {
 
 		emitter.on(state.events.DOMCONTENTLOADED, loaded)
 		emitter.on('ridder:source:remove', remove_source)
+		emitter.on('ridder:source:add', add_source)
 
 		async function loaded() {
 			if (state.p2p) await load_dat()
@@ -69,41 +70,43 @@ function ridder() {
 					sources = JSON.parse(sources)
 					state.ridder.sources = sources.list
 
-					state.ridder.sources.forEach(async function(source, id) {
-						source = parse_url(source)
-
-						if (source.protocol == 'dat:') {
-							var source_archive = new DatArchive(source.origin)
-
-							try {
-								var feed = await source_archive.readFile(source.pathname)
-								parse_feed(feed, source)
-								emitter.emit('render')
-							} catch (e) {
-								console.error(e)
-							}
-						} else {
-							if (source.href.indexOf('http://') == -1) { // can't connect to http
-								try {
-									xhr(source.href, function (err, res) {
-										if (err) return
-										parse_feed(res.body, source)
-									})
-								} catch (e) {
-									adapter(state, emitter, source, parse_feed)
-								}
-							} else {
-								adapter(state, emitter, source, parse_feed)
-							}
-						}
-
-						if (state.ridder.config.cache) save_cache()
-					})
+					state.ridder.sources.forEach(get_from_source)
 				} catch (e) {}
 
 				state.loaded = true
 				emitter.emit('render')
 			}
+		}
+
+		async function get_from_source(source, id) {
+			source = parse_url(source)
+
+			if (source.protocol == 'dat:') {
+				var source_archive = new DatArchive(source.origin)
+
+				try {
+					var feed = await source_archive.readFile(source.pathname)
+					parse_feed(feed, source)
+					emitter.emit('render')
+				} catch (e) {
+					console.error(e)
+				}
+			} else {
+				if (source.href.indexOf('http://') == -1) { // can't connect to http
+					try {
+						xhr(source.href, function (err, res) {
+							if (err) return
+							parse_feed(res.body, source)
+						})
+					} catch (e) {
+						adapter(state, emitter, source, parse_feed)
+					}
+				} else {
+					adapter(state, emitter, source, parse_feed)
+				}
+			}
+
+			if (state.ridder.config.cache) save_cache()
 		}
 
 		async function load_http() {
@@ -150,6 +153,16 @@ function ridder() {
 			state.pages = Math.floor(state.ridder.feed.length / state.ridder.config.itemsPerPage)
 		}
 
+		async function add_source(src) {
+			var l = state.ridder.sources.push(src)
+
+			archive.writeFile('/content/sources.json', JSON.stringify({list: state.ridder.sources}, null, '\t'))
+
+			await get_from_source(src, l - 1)
+
+			emitter.emit('render')
+		}
+
 		function remove_source(src) {
 			var id = state.ridder.sources.indexOf(src)
 
@@ -162,7 +175,7 @@ function ridder() {
 					i--
 				}
 			}
-			
+
 			archive.writeFile('/content/sources.json', JSON.stringify({list: state.ridder.sources}, null, '\t'))
 
 			emitter.emit('render')

@@ -1,6 +1,9 @@
 const html = require('nanohtml')
 const wrapper = require('../components/wrapper')
 
+const Input = require('../components/input')
+const new_source = new Input('Source URL')
+
 module.exports = wrapper(view)
 
 function view (state, emit) {
@@ -8,6 +11,14 @@ function view (state, emit) {
 		<div class="1 db">
 			<div class="db tac mb1">Manage Sources</div>
 			<div>
+				<div class="1 ofh mb0-5 bb p0-5">
+					<div class="4/5 dib fl">
+						${new_source.render(state, emit)}
+					</div>
+					<div class="1/5 dib fl">
+						<a href="#" onclick="${add}">Add</a>
+					</div>
+				</div>
 				${state.ridder.sources.map(source)}
 			</div>
 		</div>
@@ -29,6 +40,15 @@ function view (state, emit) {
 			e.preventDefault()
 
 			emit('ridder:source:remove', state)
+		}
+	}
+
+	function add(e) {
+		e.preventDefault()
+
+		if (new_source.element.value.trim() != '') {
+			emit('ridder:source:add', new_source.element.value.trim())
+			new_source.element.value = ''
 		}
 	}
 }

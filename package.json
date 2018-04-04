@@ -27,6 +27,7 @@
     "choo": "^6.11.0-preview1",
     "feedme": "^1.2.0",
     "forkup": "^0.2.1",
+    "nanocomponent": "^6.5.1",
     "nanohtml": "^1.2.2",
     "parse-dat-url": "^3.0.1",
     "xhr": "^2.4.1"

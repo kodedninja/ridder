@@ -188,6 +188,11 @@ p > img {
   100% { transform: rotate(360deg) }
 }
 
+input {
+	border: none;
+	outline: none;
+}
+
 /* Media query customs */
 
 @media (max-width: 900px) {
