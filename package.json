@@ -1,7 +1,7 @@
 {
   "name": "ridder",
   "version": "0.0.1",
-  "description": "An RSS reader for Beaker",
+  "description": "A personal RSS reader on the peer-to-peer web",
   "main": "src/index.js",
   "scripts": {
     "build": "browserify -o bundles/bundle.js src/index.js",

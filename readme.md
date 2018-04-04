@@ -1,12 +1,16 @@
 # Ridder Pre-Alpha
 A personal RSS reader on the peer-to-peer web
 
-## TODO
+## Pre-Alpha Launch TODO
 
 - [x] adapter
-- [ ] manage sources
+- [x] manage sources
 - [ ] cache
 - [ ] save items
 - [ ] forkup
-- [ ] multimedia
+- [ ] cleanup code
+- [ ] boarding page
+
+## Others
+- [ ] multimedia items
 - [ ] search
