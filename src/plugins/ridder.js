@@ -130,7 +130,8 @@ function ridder() {
 				if (feed.items[i].link && feed.items[i].link.indexOf(source.origin)) feed.items[i].link = source.origin + feed.items[i].link
 				feed.items[i].source = {
 					title: feed.title,
-					url: source.origin
+					url: source.origin,
+					feed: source.href
 				}
 			}
 
@@ -155,7 +156,13 @@ function ridder() {
 			if (id == -1) return
 
 			state.ridder.sources.splice(id, 1)
-
+			for (var i = 0; i < state.ridder.feed.length; i++) {
+				if (state.ridder.feed[i].source.feed == src) {
+					state.ridder.feed.splice(i, 1)
+					i--
+				}
+			}
+			
 			archive.writeFile('/content/sources.json', JSON.stringify({list: state.ridder.sources}, null, '\t'))
 
 			emitter.emit('render')
