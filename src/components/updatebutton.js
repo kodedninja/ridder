@@ -17,7 +17,7 @@ module.exports = class Updatebutton extends Nanocomponent {
 		}, 750)
 
 		return html`
-			<a class="pa t0 mr1 nbb" style="color: #E87EA1; transform: rotate(-40deg); right: 0;" href="#" onclick="${click}">${this.show ? 'UPDATE!' : ''}</a>
+			<a class="pa t0 mr1 nbb" style="color: blue; transform: rotate(-40deg); right: 0;" href="#" onclick="${click}">${this.show ? 'UPDATE!' : ''}</a>
 		`
 
 		function click(e) {

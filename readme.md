@@ -10,9 +10,9 @@ A personal RSS reader on the peer-to-peer web
 - [ ] cleanup code && css bugfixes
 - [ ] boarding page
 - [x] check if source was already added
-- [ ] read
 
 ## Others
+- [ ] read
 - [ ] save items && grab out content (similar to Dropout)
 - [ ] cache
 - [ ] multimedia items
