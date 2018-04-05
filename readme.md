@@ -8,7 +8,7 @@ A personal RSS reader on the peer-to-peer web
 - [ ] cache
 - [ ] read
 - [ ] save items
-- [ ] new design?
+- [x] new design
 - [ ] forkup (add an update available button)
 - [ ] cleanup code
 - [ ] boarding page

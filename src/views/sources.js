@@ -3,7 +3,7 @@ const autofocus = require('dom-autofocus')
 const wrapper = require('../components/wrapper')
 
 const Input = require('../components/input')
-const new_source = new Input('Source URL')
+const new_source = new Input('URL of feed...')
 
 module.exports = wrapper(view)
 
