@@ -6,11 +6,16 @@ A personal RSS reader on the peer-to-peer web
 - [x] adapter
 - [x] manage sources
 - [ ] cache
+- [ ] read
 - [ ] save items
-- [ ] forkup
+- [ ] new design?
+- [ ] forkup (add an update available button)
 - [ ] cleanup code
 - [ ] boarding page
 
 ## Others
 - [ ] multimedia items
 - [ ] search
+- [ ] grab out content (similar to Dropout)
+
+## Credits

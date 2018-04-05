@@ -25,6 +25,7 @@
   "homepage": "https://github.com/kodedninja/ridder#readme",
   "dependencies": {
     "choo": "^6.11.0-preview1",
+    "dom-autofocus": "^1.0.1",
     "feedme": "^1.2.0",
     "forkup": "^0.2.1",
     "nanocomponent": "^6.5.1",

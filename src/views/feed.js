@@ -6,12 +6,8 @@ module.exports = wrapper(view)
 
 function view(state, emit) {
 	return html`
-		<div class="1">
-			<div class="dib 1/5 fl pr1 pt1">
-				<a href="/sources" class="mb1 dib">Sources</a>
-				${state.ridder.sources.map(source)}
-			</div>
-			<div class="dib 4/5 fl">
+		<div class="1 p2 fl">
+			<div class="dib 1 fl">
 				<div class="1 fl">
 					${state.ridder.feed
 						.filter(pagination)

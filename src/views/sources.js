@@ -1,4 +1,5 @@
 const html = require('nanohtml')
+const autofocus = require('dom-autofocus')
 const wrapper = require('../components/wrapper')
 
 const Input = require('../components/input')
@@ -13,7 +14,7 @@ function view (state, emit) {
 			<div>
 				<div class="1 ofh mb0-5 bb p0-5">
 					<div class="4/5 dib fl">
-						${new_source.render(state, emit)}
+						${autofocus(new_source.render(state, emit))}
 					</div>
 					<div class="1/5 dib fl">
 						<a href="#" onclick="${add}">Add</a>
