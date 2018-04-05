@@ -16,27 +16,27 @@ module.exports = function(view) {
 		function sidebar() {
 			return html`
 				<div class="fl dib pf t0" style="width: 80px; height: 100vh;">
-					<a class="${state.route != '/' ? 'br' : ''} bb db bw2 nbb nav-button pr" href="/">
+					<a class="${state.route != '/' ? 'br' : ''} bb db bw2 nbb nav-button pr" href="/" onclick="${home}">
 						<span>
 							Feed
 						</span>
 					</a>
-					<a class="${state.route != '/sources' ? 'br' : ''} bb db bw2 nbb nav-button pr" href="/sources">
+					<a class="${state.route != 'sources' ? 'br' : ''} bb db bw2 nbb nav-button pr" href="/sources">
 						<span>
 							Sources
 						</span>
 					</a>
-					<a class="${state.route != '/settings' ? 'br' : ''} bb db bw2 nbb nav-button pr" href="/settings">
+					<a class="${state.route != 'settings' ? 'br' : ''} bb db bw2 nbb nav-button pr" href="/settings">
 						<span>
 							Settings
 						</span>
 					</a>
 				</div>
 			`
+			function home(e) {
+				state.page = 0
+				emit('page:move', 0)
+			}
 		}
-		/*function home(e) {
-		state.page = 0
-		emit('page:move', 0)
-	}*/
 	}
 }

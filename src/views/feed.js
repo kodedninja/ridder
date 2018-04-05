@@ -14,8 +14,8 @@ function view(state, emit) {
 						.map(item)}
 				</div>
 				<div class="1 py1 fl">
-					<a href="#" class="fl nbb" onclick="${prev_page}">${state.page > 0 ? '← Back' : ''}</a>
-					<a href="#" class="fr nbb" onclick="${next_page}">${state.page < state.pages - 1 ? 'Next →' : ''}</a>
+					<a href="#" class="fl nbb f3" onclick="${prev_page}">${state.page > 0 ? '← Back' : ''}</a>
+					<a href="#" class="fr nbb f3" onclick="${next_page}">${state.page < state.pages - 1 ? 'Next →' : ''}</a>
 				</div>
 			</div>
 		</div>
@@ -31,11 +31,10 @@ function view(state, emit) {
 
 	function item(state) {
 		return html`
-			<a href="${state.link}" class="bb db 1 nbb py1" target="_blank">
-				<a href="${state.source.url}">${state.source.title}</a><span>${' | '}</span>
-				<span class="fwb">${state.title}</span><span>${state.title ? ' | ' : ''}</span>
-				<span class="tcgrey">${clear(state.description)}</span><span>${state.description ? ' | ' : ''}</span>
-				<span>${date(state.pubdate)}</span>
+			<a href="${state.link}" class="db 1 nbb py1" target="_blank">
+				<a href="${state.source.url}">${state.source.title}</a> | <span>${date(state.pubdate)}</span>
+				<span class="fwb f1 db">${state.title}</span>
+				<span class="tcgrey">${clear(state.description)}</span>
 			</a>
 		`
 

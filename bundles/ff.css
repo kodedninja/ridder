@@ -17,6 +17,10 @@ body, pre {
    letter-spacing: 0.5px;
 }
 
+main {
+	min-height: 100vh;
+}
+
 a {
   color: #000;
   text-decoration: none;
@@ -33,7 +37,7 @@ a:not(.nbb) {
 
 h1, h2, h3, .f1, .f2, .f3, .f4 { font-weight: bold; }
 
-h1, .f1 { font-size: 2.5rem; }
+h1, .f1 { font-size: 2.75rem; }
 h2, .f2 { font-size: 2rem; }
 h3, .f3 { font-size: 1.5rem; }
 h4, .f4 { font-size: 1.25rem; }
@@ -130,6 +134,7 @@ code {
 .px1 { padding-left: 1.5rem; padding-right: 1.5rem; }
 .pr1 { padding-right: 1.5rem; }
 .py1 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py2 { padding-top: 3rem; padding-bottom: 3rem; }
 .pt1 { padding-top: 1.5rem }
 .pb1 { padding-bottom: 1.5rem }
 
@@ -189,6 +194,7 @@ input {
 
 .nav-button {
 	height: calc(100vh / 3);
+	background: #fff;
 }
 
 .nav-button > span {
