@@ -61,7 +61,7 @@ h4, .f4 { font-size: 1.25rem; }
 .tcblack, .tcblack a { color: #000 }
 .tcred, .tcred a { color: #ff0000; }
 
-.lh1 { line-height: 1.2 }
+.lh1 { line-height: 1.2; }
 
 .wwbw { word-wrap: break-word; }
 
@@ -204,6 +204,25 @@ input {
 	left: 50%;
 	transform-origin: 0 0;
 	transform: rotate(-90deg) translate(-50%, -50%);
+}
+
+.source .link {
+	transition: width 0.3s;
+}
+
+.source .remove {
+	visibility: hidden;
+	width: 0;
+	transition: width 0.3s;
+}
+
+.source:hover .link {
+	width: 95%;
+}
+
+.source:hover .remove {
+	visibility: visible;
+	width: 5%;
 }
 
 /* Media query customs */

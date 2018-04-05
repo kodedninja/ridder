@@ -10,7 +10,7 @@ module.exports = class Input extends Nanocomponent {
 
 	createElement(state, emit) {
 		return html`
-			<input type="text" placeholder="${this.placeholder}" class="f4 1">
+			<input type="text" placeholder="${this.placeholder}" class="f2 fwn 1">
 		`
 	}
 

@@ -9,30 +9,28 @@ module.exports = wrapper(view)
 
 function view (state, emit) {
 	return html`
-		<div class="1 db">
-			<div class="db tac mb1">Manage Sources</div>
-			<div>
-				<div class="1 ofh mb0-5 bb p0-5">
-					<div class="4/5 dib fl">
-						${autofocus(new_source.render(state, emit))}
-					</div>
-					<div class="1/5 dib fl">
-						<a href="#" onclick="${add}">Add</a>
-					</div>
+		<div class="1 p2 fl db">
+			<div class="1 ofh mb2 p0-5">
+				<div class="5/6 dib fl">
+					${autofocus(new_source.render(state, emit))}
 				</div>
-				${state.ridder.sources.map(source)}
+				<div class="1/6 dib fl">
+					<a href="#" class="nbb f2 db tac fwn" onclick="${add}">+ Add</a>
+				</div>
 			</div>
+
+			${state.ridder.sources.map(source)}
 		</div>
 	`
 
 	function source(state) {
 		return html`
-			<div class="1 ofh mb0-5 bb p0-5">
-				<div class="1/2 dib fl">
-					<a href="${state}" class="nbb wwbw f4" target="_blank">${state}</a>
+			<div class="1 ofh mb1 p0-5 source">
+				<div class="f2 fwb lh1 remove dib fl">
+					<a class="nbb" href="#" onclick="${remove}">―</a>
 				</div>
-				<div class="1/2 dib fl">
-					<a href="#" class="fr" onclick="${remove}">Remove</a>
+				<div class="1 dib fl lh1 link">
+					<a href="${state}" class="nbb wwbw f2 fwn" target="_blank">${state}</a>
 				</div>
 			</div>
 		`
