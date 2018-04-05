@@ -9,7 +9,7 @@ A personal RSS reader on the peer-to-peer web
 - [ ] read
 - [ ] save items
 - [x] new design
-- [ ] forkup (add an update available button)
+- [ ] forkup (add a blinking update button)
 - [ ] cleanup code
 - [ ] boarding page
 
