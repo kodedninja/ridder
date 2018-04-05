@@ -12,6 +12,7 @@ A personal RSS reader on the peer-to-peer web
 - [ ] forkup (add a blinking update button)
 - [ ] cleanup code
 - [ ] boarding page
+- [ ] check if source was already added
 
 ## Others
 - [ ] multimedia items

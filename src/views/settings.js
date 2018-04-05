@@ -14,7 +14,12 @@ function view(state, emit) {
 				</div>
 			</div>
 
-			<div class="fl db">More coming soon.</div>
+			<div class="fl db">
+				<p>Coming soon...</p>
+				<p><a href="https://github.com/kodedninja/ridder">Source</a></p>
+
+				<div class="f3">Thanks to <a href="https://choo.io">choo</a>, <a href="http://lunchtype.com/">Lunchtype</a> and <a href="https://beakerbrowser.com">Beaker</a>.</div>
+			</div>
 		</div>
 	`
 }
