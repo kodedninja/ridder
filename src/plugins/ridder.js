@@ -154,13 +154,15 @@ function ridder() {
 		}
 
 		async function add_source(src) {
-			var l = state.ridder.sources.push(src)
+			if (state.ridder.sources.indexOf(src) == -1) {
+				var l = state.ridder.sources.push(src)
 
-			archive.writeFile('/content/sources.json', JSON.stringify({list: state.ridder.sources}, null, '\t'))
+				archive.writeFile('/content/sources.json', JSON.stringify({list: state.ridder.sources}, null, '\t'))
 
-			await get_from_source(src, l - 1)
+				await get_from_source(src, l - 1)
 
-			emitter.emit('render')
+				emitter.emit('render')
+			}
 		}
 
 		function remove_source(src) {

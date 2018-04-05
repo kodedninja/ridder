@@ -6,10 +6,10 @@ A personal RSS reader on the peer-to-peer web
 - [x] adapter
 - [x] manage sources
 - [x] new design
-- [ ] forkup (add a blinking update button)
+- [x] forkup (add a blinking update button)
 - [ ] cleanup code && css bugfixes
 - [ ] boarding page
-- [ ] check if source was already added
+- [x] check if source was already added
 - [ ] read
 
 ## Others

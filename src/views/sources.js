@@ -26,8 +26,8 @@ function view (state, emit) {
 	function source(state) {
 		return html`
 			<div class="1 ofh mb1 p0-5 source">
-				<div class="f2 fwb lh1 remove dib fl">
-					<a class="nbb" href="#" onclick="${remove}">―</a>
+				<div class="f2 fwn lh1 remove dib fl">
+					<a class="nbb" href="#" onclick="${remove}">x</a>
 				</div>
 				<div class="1 dib fl lh1 link">
 					<a href="${state}" class="nbb wwbw f2 fwn" target="_blank">${state}</a>
