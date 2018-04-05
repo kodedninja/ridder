@@ -4,6 +4,7 @@ const app = choo()
 
 app.use(require('./plugins/scroll'))
 app.use(require('./plugins/pagination'))
+app.use(require('./plugins/updater'))
 app.use(require('./plugins/ridder')())
 
 app.route('/', require('./views/feed'))

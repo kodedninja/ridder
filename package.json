@@ -27,7 +27,7 @@
     "choo": "^6.11.0-preview1",
     "dom-autofocus": "^1.0.1",
     "feedme": "^1.2.0",
-    "forkup": "^0.2.1",
+    "forkup": "^0.3.0",
     "nanocomponent": "^6.5.1",
     "nanohtml": "^1.2.2",
     "parse-dat-url": "^3.0.1",
@@ -36,5 +36,11 @@
   "devDependencies": {
     "browserify": "^16.1.1",
     "watchify": "^3.11.0"
+  },
+  "update": {
+    "url": "dat://0f29bc7dcd18d017ef9d11c1383fd6dfc1797a94bf4805f0d31c70761c73daca",
+    "files": [
+		"/bundles/bundle.js"
+	]
   }
 }
