@@ -17,10 +17,6 @@ body, pre {
    letter-spacing: 0.5px;
 }
 
-main {
-	min-height: 100vh;
-}
-
 a {
   color: #000;
   text-decoration: none;

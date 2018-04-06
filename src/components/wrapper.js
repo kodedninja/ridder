@@ -5,9 +5,9 @@ module.exports = function(view) {
 		if (!state.loaded) return html`<main class="db 1"><div class="loading"></div></main>`
 
 		return html`
-			<main class="db 1 ba bw2 fl">
+			<main class="db 1 fl bl br bw2">
 				${sidebar()}
-				<div class="fl dib" style="margin-left: 80px; width: calc(100% - 80px);">
+				<div class="fl dib bt bb bw2" style="margin-left: 80px; width: calc(100% - 80px); min-height: 100vh;">
 					${view(state, emit)}
 				</div>
 			</main>
@@ -16,7 +16,7 @@ module.exports = function(view) {
 		function sidebar() {
 			return html`
 				<div class="fl dib pf t0" style="width: 80px; height: 100vh;">
-					<a class="${state.route != '/' ? 'br' : ''} bb db bw2 nbb nav-button pr" href="/" onclick="${home}">
+					<a class="${state.route != '/' ? 'br' : ''} bt bb db bw2 nbb nav-button pr" href="/" onclick="${home}">
 						<span>
 							Feed
 						</span>
