@@ -12,7 +12,7 @@ function view (state, emit) {
 		<div class="1 p2 fl db">
 			<div class="1 ofh mb2 p0-5">
 				<div class="5/6 dib fl">
-					${autofocus(new_source.render(state, emit))}
+					${autofocus(new_source.render(state, emit, 2))}
 				</div>
 				<div class="1/6 dib fl">
 					<a href="#" class="nbb f2 db tac fwn" onclick="${add}">+ Add</a>

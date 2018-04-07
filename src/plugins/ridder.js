@@ -29,6 +29,7 @@ function ridder() {
 		emitter.on(state.events.DOMCONTENTLOADED, loaded)
 		emitter.on('ridder:source:remove', remove_source)
 		emitter.on('ridder:source:add', add_source)
+		emitter.on('ridder:config:save', save_config)
 
 		async function loaded() {
 			if (state.p2p) await load_dat()
@@ -180,6 +181,11 @@ function ridder() {
 
 			archive.writeFile('/content/sources.json', JSON.stringify({list: state.ridder.sources}, null, '\t'))
 
+			emitter.emit('render')
+		}
+
+		async function save_config() {
+			await archive.writeFile('/content/config.json', JSON.stringify(state.ridder.config, null, '\t'))
 			emitter.emit('render')
 		}
 	}
