@@ -52,8 +52,8 @@ function view(state, emit) {
 	}
 
 	function pagination(_, id) {
-		return id > state.page * state.ridder.config.itemsPerPage &&
-			id <= (state.page + 1) * state.ridder.config.itemsPerPage
+		return id >= state.page * state.ridder.config.itemsPerPage &&
+			id < (state.page + 1) * state.ridder.config.itemsPerPage
 	}
 
 	function next_page(e) {

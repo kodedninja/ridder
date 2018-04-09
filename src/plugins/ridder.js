@@ -37,7 +37,7 @@ function ridder() {
 		}
 
 		async function load_dat() {
-		//	state.ridder.info = await archive.getInfo()
+			// state.ridder.info = await archive.getInfo()
 
 			try {
 				var config = await archive.readFile('/content/config.json')
