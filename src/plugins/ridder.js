@@ -151,6 +151,8 @@ function ridder() {
 				return (new Date(b.pubdate).getTime() - new Date(a.pubdate).getTime())
 			})
 
+			// remove duplicates
+
 			state.pages = Math.floor(state.ridder.feed.length / state.ridder.config.itemsPerPage)
 		}
 
