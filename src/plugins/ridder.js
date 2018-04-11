@@ -103,7 +103,10 @@ function ridder() {
 				if (source.href.indexOf('http://') == -1) { // can't connect to http
 					try {
 						xhr(source.href, function (err, res) {
-							if (err) throw err
+							if (err) {
+								adapter(state, emitter, source, parse_feed)
+								return
+							}
 							parse_feed(res.body, source)
 						})
 					} catch (e) {
@@ -224,7 +227,10 @@ function ridder() {
 				if (url.href.indexOf('http://') == -1) { // can't connect to http
 					try {
 						xhr(url.href, function (err, res) {
-							if (err) return
+							if (err) {
+								adapter(state, emitter, url, finish)
+								return
+							}
 							finish(res.body, url)
 						})
 					} catch (e) {
