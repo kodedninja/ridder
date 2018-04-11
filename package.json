@@ -1,6 +1,6 @@
 {
   "name": "ridder",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An RSS reader that you own",
   "main": "src/index.js",
   "scripts": {
@@ -41,7 +41,8 @@
   "update": {
     "url": "dat://0f29bc7dcd18d017ef9d11c1383fd6dfc1797a94bf4805f0d31c70761c73daca",
     "files": [
-      "/bundles/bundle.js"
+      "/bundles/bundle.js",
+	  "/bundles/ff.css"
     ]
   }
 }

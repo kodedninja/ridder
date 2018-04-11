@@ -8,8 +8,13 @@ const Input = require('../components/input')
 
 module.exports = wrapper(view)
 
+var checked = false
+
 function view(state, emit) {
-	emit('updater:check')
+	if (!checked) {
+		emit('updater:check')
+		checked = true
+	}
 
 	const adapter = new Input('Adapter URL', state.ridder.config.adapter)
 	const entries_per_page = new Input('Entries per Page', state.ridder.config.itemsPerPage)
@@ -19,7 +24,7 @@ function view(state, emit) {
 			<div class="1 fl mb1">
 				<div class="f1 fl dib 1/2">Settings</div>
 				<div class="f3 fl dib 1/2">
-					<span class="fr"><span class="mark">Ridder</span> <span class="fwn">Pre-Alpha v1.0.0</span></span>
+					<span class="fr"><span class="mark">Ridder</span> <span class="fwn">Pre-Alpha v1.0.1</span></span>
 					<a class="fr mr1 nbb">${state.update ? up_button.render(emit) : ''}</a>
 				</div>
 			</div>
