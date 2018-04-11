@@ -1,5 +1,6 @@
 const html = require('nanohtml')
 const autofocus = require('dom-autofocus')
+const nanoevent = require('../nanoevent')
 const wrapper = require('../components/wrapper')
 
 const Input = require('../components/input')
@@ -12,7 +13,7 @@ function view (state, emit) {
 		<div class="1 p2 fl db">
 			<div class="1 ofh mb2 p0-5">
 				<div class="5/6 dib fl">
-					${autofocus(new_source.render(state, emit, 2))}
+					${autofocus(nanoevent(new_source.render(state, emit, 2), 'keydown', ns_keydown))}
 				</div>
 				<div class="1/6 dib fl">
 					<a href="#" class="nbb f2 db tac fwn" onclick="${add}">+ Add</a>
@@ -45,9 +46,15 @@ function view (state, emit) {
 	function add(e) {
 		e.preventDefault()
 
-		if (new_source.element.value.trim() != '') {
-			emit('ridder:source:add', new_source.element.value.trim())
+		var url = new_source.element.value.trim()
+		if (url != '') {
+			if (url.indexOf('http://') == -1 && url.indexOf('https://') == -1 && url.indexOf('dat://') == -1) return
+			emit('ridder:source:add', url)
 			new_source.element.value = ''
 		}
+	}
+
+	function ns_keydown(e) {
+		if (e.keyCode == 13) add(e)
 	}
 }
