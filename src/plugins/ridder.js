@@ -242,7 +242,7 @@ function ridder() {
 
 					state.ridder.reader.current = {
 						title: article.title,
-						content: transform_img(article.content, source)
+						content: article.content
 					}
 					state.ridder.reader.loaded = true
 					emitter.emit('render')
@@ -258,17 +258,6 @@ function ridder() {
 				}
 				state.ridder.reader.loaded = true
 				emitter.emit('render')
-			}
-
-			function transform_img(text, source) {
-				var match = text.match(/\<img.+src\=(?:\"|\')(.+?)(?:\"|\')(?:.+?)\>/)
-				while (match) {
-					text = text.replace(match[1], source.origin + match[1])
-
-					match = text.match(/\<img.+src\=(?:\"|\')(.+?)(?:\"|\')(?:.+?)\>/)
-					break
-				}
-				return text
 			}
 		}
 	}
