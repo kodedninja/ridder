@@ -29,14 +29,19 @@ function view(state, emit) {
 		`
 	}
 
-	function item(state) {
+	function item(state, id) {
 		return html`
-			<a href="${state.link}" class="db 1 nbb py1" target="_blank">
+			<a href="${state.link}" class="db 1 nbb py1 feeditem closed" target="_blank">
 				<a href="${state.source.url}">${state.source.title}</a> | <span>${date(state.pubdate)}</span>
 				<span class="fwb f1 db">${state.title}</span>
-				<span class="tcgrey">${clear(state.description)}</span>
+				<span class="tcgrey description db" onclick="${click}">${clear(state.description)}</span>
 			</a>
 		`
+
+		function click(e) {
+			e.preventDefault()
+			this.parentNode.classList.toggle('closed')
+		}
 
 		function clear(text) {
 			return raw(text.replace(/\<.*?>/g,''))

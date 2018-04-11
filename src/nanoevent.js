@@ -1,6 +1,10 @@
 module.exports = function (el, e, handler) {
-	el.removeEventListener(e, handler)
-	el.addEventListener(e, handler)
-	
+	try {
+		el.removeEventListener(e, handler)
+		el.addEventListener(e, handler)
+	} catch (e) {
+		console.error(e)
+	}
+
 	return el
 }

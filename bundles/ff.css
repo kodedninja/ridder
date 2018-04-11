@@ -203,24 +203,22 @@ input {
 	transform: rotate(-90deg) translate(-50%, -50%);
 }
 
-.source .link {
-	transition: width 0.3s;
-}
-
+.source .link { transition: width 0.3s; }
 .source .remove {
 	visibility: hidden;
 	width: 0;
 	transition: width 0.3s;
 }
-
-.source:hover .link {
-	width: 95%;
-}
-
+.source:hover .link { width: 95%; }
 .source:hover .remove {
 	visibility: visible;
 	width: 5%;
 }
+
+.feeditem { overflow: hidden; }
+.feeditem .description { cursor: n-resize; }
+.feeditem.closed { max-height: 250px; }
+.feeditem.closed .description { cursor: s-resize; }
 
 /* Media query customs */
 
