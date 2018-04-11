@@ -209,9 +209,7 @@ function ridder() {
 
 				try {
 					var html = await read_archive.readFile(url.pathname)
-
 					finish(html)
-
 				} catch (e) {
 					try {
 						var html = await read_archive.readFile(url.pathname + '/index.html')
@@ -225,11 +223,7 @@ function ridder() {
 					try {
 						xhr(url.href, function (err, res) {
 							if (err) return
-							read(res.body, function (err, article, meta) {
-								state.ridder.reader.current = article.title
-								state.ridder.reader.loaded = true
-								emitter.emit('render')
-							})
+							finish(res.body, url)
 						})
 					} catch (e) {
 						adapter(state, emitter, url, finish)
@@ -246,11 +240,9 @@ function ridder() {
 						return
 					}
 
-					console.log(article.content)
-
 					state.ridder.reader.current = {
 						title: article.title,
-						content: article.content
+						content: transform_img(article.content, source)
 					}
 					state.ridder.reader.loaded = true
 					emitter.emit('render')
@@ -266,6 +258,17 @@ function ridder() {
 				}
 				state.ridder.reader.loaded = true
 				emitter.emit('render')
+			}
+
+			function transform_img(text, source) {
+				var match = text.match(/\<img.+src\=(?:\"|\')(.+?)(?:\"|\')(?:.+?)\>/)
+				while (match) {
+					text = text.replace(match[1], source.origin + match[1])
+
+					match = text.match(/\<img.+src\=(?:\"|\')(.+?)(?:\"|\')(?:.+?)\>/)
+					break
+				}
+				return text
 			}
 		}
 	}
