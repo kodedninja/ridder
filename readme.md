@@ -11,21 +11,11 @@ Making a frontend only RSS reader has a drawback: you can't load content from ``
 
 My adapter is at [lively-adapter.glitch.me](https://lively-adapter.glitch.me) but you can [remix it](https://glitch.com/edit/#!/lively-adapter) and set that to be yours.
 
-## Pre-Alpha TODO
-- [x] adapter
-- [x] manage sources
-- [x] new design
-- [x] forkup (add a blinking update button)
-- [ ] cleanup code
-- [x] boarding page
-- [x] check if source was already added
-- [x] css bugfixes
-- [x] settings
-
-## Others
+## TODO
 - [ ] show if there are sources that aren't loaded yet
 - [ ] read
 - [ ] save items && grab out content (similar to Dropout)
 - [ ] cache
+- [ ] opml support
 - [ ] multimedia items
 - [ ] search

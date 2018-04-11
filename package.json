@@ -30,6 +30,7 @@
     "forkup": "^0.3.0",
     "nanocomponent": "^6.5.1",
     "nanohtml": "^1.2.2",
+    "node-readability": "^3.0.0",
     "parse-dat-url": "^3.0.1",
     "xhr": "^2.4.1"
   },
@@ -40,7 +41,7 @@
   "update": {
     "url": "dat://0f29bc7dcd18d017ef9d11c1383fd6dfc1797a94bf4805f0d31c70761c73daca",
     "files": [
-		"/bundles/bundle.js"
-	]
+      "/bundles/bundle.js"
+    ]
   }
 }

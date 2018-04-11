@@ -144,6 +144,7 @@ code {
 .mt1 { margin-top: 1.5rem }
 .mb1 { margin-bottom: 1.5rem }
 .my2 { margin: 3rem 0 }
+.ml2 { margin-left: 3rem;}
 .mt2 { margin-top: 3rem }
 .mb2 { margin-bottom: 3rem }
 .mt3 { margin-top: 4rem }
@@ -223,7 +224,7 @@ input {
 /* Media query customs */
 
 @media (max-width: 900px) {
-	.m-c100 { width: 100% }
+	.m-1 { width: 100% }
 
     .p0-5 { padding: 0.5rem }
     .p1 { padding: 1rem }

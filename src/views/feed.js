@@ -33,6 +33,9 @@ function view(state, emit) {
 		return html`
 			<a href="${state.link}" class="db 1 nbb py1 feeditem closed" target="_blank">
 				<a href="${state.source.url}">${state.source.title}</a> | <span>${date(state.pubdate)}</span>
+					<span class="dib ml2 fsmall">
+						<a href="#" onclick="${read}">Read</a>
+					</span>
 				<span class="fwb f1 db">${state.title}</span>
 				<span class="tcgrey description db" onclick="${click}">${clear(state.description)}</span>
 			</a>
@@ -41,6 +44,11 @@ function view(state, emit) {
 		function click(e) {
 			e.preventDefault()
 			this.parentNode.classList.toggle('closed')
+		}
+
+		function read(e) {
+			e.preventDefault()
+			emit('ridder:read', state.link)
 		}
 
 		function clear(text) {

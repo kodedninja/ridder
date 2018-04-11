@@ -10,5 +10,6 @@ app.use(require('./plugins/ridder')())
 app.route('/', require('./views/feed'))
 app.route('/sources', require('./views/sources'))
 app.route('/settings', require('./views/settings'))
+app.route('/reader', require('./views/reader'))
 
 app.mount('main')

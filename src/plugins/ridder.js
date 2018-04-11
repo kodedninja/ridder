@@ -1,6 +1,7 @@
 const xhr = require('xhr')
 const parse_url = require('parse-dat-url')
 const FeedMe = require('feedme')
+const read = require('node-readability')
 
 const adapter = require('./adapter')
 
@@ -23,6 +24,10 @@ function ridder() {
 				cache: false,
 				itemsPerPage: 20,
 				adapter: 'https://lively-adapter.glitch.me/'
+			},
+			reader: {
+				current: null,
+				loaded: false
 			}
 		}
 
@@ -30,6 +35,7 @@ function ridder() {
 		emitter.on('ridder:source:remove', remove_source)
 		emitter.on('ridder:source:add', add_source)
 		emitter.on('ridder:config:save', save_config)
+		emitter.on('ridder:read', handle_read)
 
 		async function loaded() {
 			if (state.p2p) await load_dat()
@@ -189,6 +195,78 @@ function ridder() {
 		async function save_config() {
 			await archive.writeFile('/content/config.json', JSON.stringify(state.ridder.config, null, '\t'))
 			emitter.emit('render')
+		}
+
+		async function handle_read(url) {
+			state.ridder.reader.loaded = false
+			emitter.emit('pushState', '/reader')
+
+			// take out content
+			url = parse_url(url)
+
+			if (url.protocol == 'dat:') {
+				var read_archive = new DatArchive(url.origin)
+
+				try {
+					var html = await read_archive.readFile(url.pathname)
+
+					finish(html)
+
+				} catch (e) {
+					try {
+						var html = await read_archive.readFile(url.pathname + '/index.html')
+						finish(html, url)
+					} catch (e) {
+						fail(url.href)
+					}
+				}
+			} else {
+				if (url.href.indexOf('http://') == -1) { // can't connect to http
+					try {
+						xhr(url.href, function (err, res) {
+							if (err) return
+							read(res.body, function (err, article, meta) {
+								state.ridder.reader.current = article.title
+								state.ridder.reader.loaded = true
+								emitter.emit('render')
+							})
+						})
+					} catch (e) {
+						adapter(state, emitter, url, finish)
+					}
+				} else {
+					adapter(state, emitter, url, finish)
+				}
+			}
+
+			function finish(body, source) {
+				read(body, function (err, article, meta) {
+					if (err || article.content == false) {
+						fail(source.href)
+						return
+					}
+
+					console.log(article.content)
+
+					state.ridder.reader.current = {
+						title: article.title,
+						content: article.content
+					}
+					state.ridder.reader.loaded = true
+					emitter.emit('render')
+
+					article.close()
+				})
+			}
+
+			function fail(source) {
+				state.ridder.reader.current = {
+					title: 'Page cannot be transformed',
+					content: '<p class="tac"><a href="' + source + '" target="_blank">Open original</a></p>'
+				}
+				state.ridder.reader.loaded = true
+				emitter.emit('render')
+			}
 		}
 	}
 }
