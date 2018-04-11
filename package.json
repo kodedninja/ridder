@@ -1,6 +1,6 @@
 {
   "name": "ridder",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "An RSS reader that you own",
   "main": "src/index.js",
   "scripts": {
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/kodedninja/ridder#readme",
   "dependencies": {
+    "bytespin": "^2.0.6",
     "choo": "^6.11.0-preview1",
     "dom-autofocus": "^1.0.1",
     "feedme": "^1.2.0",
@@ -42,7 +43,7 @@
     "url": "dat://0f29bc7dcd18d017ef9d11c1383fd6dfc1797a94bf4805f0d31c70761c73daca",
     "files": [
       "/bundles/bundle.js",
-	  "/bundles/ff.css"
+      "/bundles/ff.css"
     ]
   }
 }

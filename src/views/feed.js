@@ -1,6 +1,9 @@
 const html = require('nanohtml')
 const raw = require('nanohtml/raw')
 const wrapper = require('../components/wrapper')
+const Loader = require('bytespin')
+
+const loader = Loader({chars: '.oO0', speed: 130})
 
 module.exports = wrapper(view)
 
@@ -8,6 +11,7 @@ function view(state, emit) {
 	return html`
 		<div class="1 p2 fl">
 			<div class="dib 1 fl">
+				${state.ridder.loaded_sources < state.ridder.sources.length ? html`<div class="tac f4 fwn">Fetching ${loader.render(true)}</div>` : ''}
 				<div class="1 fl">
 					${state.ridder.feed
 						.filter(pagination)

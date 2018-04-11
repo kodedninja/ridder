@@ -19,6 +19,7 @@ function ridder() {
 		state.ridder = {
 			feed: [],
 			sources: [],
+			loaded_sources: 0,
 			info: null,
 			config: {
 				cache: false,
@@ -147,6 +148,7 @@ function ridder() {
 
 			add_to_feed(feed.items)
 
+			state.ridder.loaded_sources++
 			emitter.emit('render')
 		}
 
