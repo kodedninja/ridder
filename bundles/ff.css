@@ -216,10 +216,8 @@ input {
 	width: 5%;
 }
 
-.feeditem { overflow: hidden; }
-.feeditem .description { cursor: n-resize; }
-.feeditem.closed { max-height: 250px; }
-.feeditem.closed .description { cursor: s-resize; }
+.feeditem .description { cursor: n-resize; overflow: hidden; }
+.feeditem.closed .description { cursor: s-resize; max-height: 150px; }
 
 /* Media query customs */
 

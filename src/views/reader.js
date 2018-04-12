@@ -10,10 +10,14 @@ function view(state, emit) {
 
 	return html`
 		<div class="p2 fl db 1">
-			<div class="f2 tac mb1">${state.ridder.reader.current.title}</div>
+			<div class="f2 tac mb1"><a href="/" class="nbb">←</a> ${state.ridder.reader.current.title}</div>
 			<div class="db 2/3 m-1 mxa">
 				${raw(state.ridder.reader.current.content)}
 			</div>
 		</div>
 	`
+
+	function click(e) {
+		e.preventDefault()
+	}
 }

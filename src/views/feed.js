@@ -52,7 +52,7 @@ function view(state, emit) {
 
 		function read(e) {
 			e.preventDefault()
-			emit('ridder:read', state.link)
+			emit('ridder:read', state.link, document.body.scrollTop)
 		}
 
 		function clear(text) {

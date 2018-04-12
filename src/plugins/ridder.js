@@ -202,9 +202,11 @@ function ridder() {
 			emitter.emit('render')
 		}
 
-		async function handle_read(url) {
+		async function handle_read(url, scrollTop) {
 			state.ridder.reader.loaded = false
 			emitter.emit('pushState', '/reader')
+
+			state.scroll = scrollTop
 
 			// take out content
 			url = parse_url(url)
