@@ -163,6 +163,29 @@ function ridder() {
 			})
 
 			// remove duplicates
+			var temp = []
+			var cache = {}
+			state.ridder.feed = state.ridder.feed.filter((f) => {
+				var res = true
+				for (var i = 0; i < temp.length && res; i++) {
+					if (f.link == temp[i].link) {
+						res = false
+					} else {
+						// this must be done to avoid url parameter differences...
+
+						if (!cache[f.link]) cache[f.link] = parse_url(f.link)
+						if (!cache[temp[i].link]) cache[temp[i].link] = parse_url(temp[i].link)
+
+						if (cache[f.link].origin == cache[temp[i].link].origin &&
+							cache[f.link].pathname == cache[temp[i].link].pathname) {
+							res = false
+						}
+					}
+				}
+
+				temp.push(f)
+				return res
+			})
 
 			state.pages = Math.floor(state.ridder.feed.length / state.ridder.config.itemsPerPage)
 		}
