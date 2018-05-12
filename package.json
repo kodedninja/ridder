@@ -1,6 +1,6 @@
 {
   "name": "ridder",
-  "version": "0.1.11",
+  "version": "0.1.2",
   "description": "An RSS reader that you own",
   "main": "src/index.js",
   "scripts": {
