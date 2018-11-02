@@ -102,13 +102,20 @@ function ridder() {
 			} else {
 				if (source.href.indexOf('http://') == -1) { // can't connect to http
 					try {
-						xhr(source.href, function (err, res) {
-							if (err) {
-								adapter(state, emitter, source, parse_feed)
-								return
-							}
-							parse_feed(res.body, source)
-						})
+						// use the globalFetch api if available
+						if (window.experimental && window.experimental.globalFetch) {
+							var response = await experimental.globalFetch(source.href)
+							var text = await response.text()
+							parse_feed(text)
+						} else {
+							xhr(source.href, function (err, res) {
+								if (err) {
+									adapter(state, emitter, source, parse_feed)
+									return
+								}
+								parse_feed(res.body, source)
+							})
+						}
 					} catch (e) {
 						adapter(state, emitter, source, parse_feed)
 					}
