@@ -13,7 +13,7 @@ My adapter is at [lively-adapter.glitch.me](https://lively-adapter.glitch.me) bu
 
 ## TODO
 - [x] show if there are sources that aren't loaded yet
-- [ ] read
+- [x] read
 - [ ] save items && grab out content (similar to Dropout)
 - [ ] cache
 - [ ] opml support
