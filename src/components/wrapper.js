@@ -2,15 +2,15 @@ const html = require('nanohtml')
 
 module.exports = function(view) {
 	return function (state, emit) {
-		if (!state.loaded) return html`<main class="db 1"><div class="loading"></div></main>`
+		if (!state.loaded) return html`<body class="db 1"><div class="loading"></div></body>`
 
 		return html`
-			<main class="db 1 fl bl br bw2">
+			<body class="db 1 fl bl br bw2">
 				${sidebar()}
 				<div class="fl dib bt bb bw2" style="margin-left: 80px; width: calc(100% - 80px); min-height: 100vh;">
 					${view(state, emit)}
 				</div>
-			</main>
+			</body>
 		`
 
 		function sidebar() {

@@ -1,4 +1,7 @@
 const choo = require('choo')
+const css = require('sheetify')
+
+css('./styles/ff.css')
 
 const app = choo()
 
@@ -12,4 +15,4 @@ app.route('/sources', require('./views/sources'))
 app.route('/settings', require('./views/settings'))
 app.route('/reader', require('./views/reader'))
 
-app.mount('main')
+app.mount('body')

@@ -4,8 +4,8 @@
   "description": "An RSS reader that you own",
   "main": "src/index.js",
   "scripts": {
-    "build": "browserify -o bundles/bundle.js src/index.js",
-    "start": "watchify -o bundles/bundle.js src/index.js"
+    "build": "browserify -o bundles/bundle.js -t sheetify src/index.js",
+    "start": "watchify -o bundles/bundle.js -t sheetify src/index.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
     "nanohtml": "^1.2.2",
     "node-readability": "^3.0.0",
     "parse-dat-url": "^3.0.1",
+    "sheetify": "^7.3.3",
     "xhr": "^2.4.1"
   },
   "devDependencies": {
@@ -43,7 +44,7 @@
     "url": "dat://0f29bc7dcd18d017ef9d11c1383fd6dfc1797a94bf4805f0d31c70761c73daca",
     "files": [
       "/bundles/bundle.js",
-      "/bundles/ff.css"
+      "/index.html"
     ]
   }
 }
