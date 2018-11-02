@@ -24,7 +24,7 @@ function view(state, emit) {
 			<div class="1 fl mb1">
 				<div class="f1 fl dib 1/2">Settings</div>
 				<div class="f3 fl dib 1/2">
-					<span class="fr"><span class="mark">Ridder</span> <span class="fwn">Pre-Alpha v1.0.2</span></span>
+					<span class="fr"><span class="mark">Ridder</span> <span class="fwn">Pre-Alpha v0.1.3</span></span>
 					<a class="fr mr1 nbb">${state.update ? up_button.render(emit) : ''}</a>
 				</div>
 			</div>
